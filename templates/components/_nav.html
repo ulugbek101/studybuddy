@@ -25,10 +25,14 @@
             <div class="header__user">
                 <a href="{% url 'profile' pk=request.user.id %}">
                     <div class="avatar avatar--medium active">
-                        <img src="https://randomuser.me/api/portraits/men/37.jpg" />
+                        <img src="{{ request.user.avatar.url }}" />
                     </div>
-                    <!-- TODO replace ⬇ username to full_name after below -->
-                    <p>{{ request.user.username }} <span>@{{ request.user.username }}</span></p>
+                    <p>
+                        {% if request.user.name %}
+                        {{ request.user.name }}
+                        {% endif %}
+                        <span>@{{ request.user.username }}</span>
+                    </p>
                 </a>
                 <button class="dropdown-button">
                     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
