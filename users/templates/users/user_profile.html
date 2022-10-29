@@ -12,29 +12,30 @@
       <div class="profile">
         <div class="profile__avatar">
           <div class="avatar avatar--large active">
-            <img src="https://randomuser.me/api/portraits/men/11.jpg" />
+            <img src="{{ user.avatar.url }}" />
           </div>
         </div>
         <div class="profile__info">
-          <h3>{{ user.username }}</h3>
-          <!-- TODO replace ⬆ username to full_name after -->
+          <h3>
+            {% if participant.name %}
+            {{ participant.name }}
+            {% endif %}
+          </h3>
           <p>@{{ user.username }}</p>
           <a href="{% url 'profile-edit' pk=request.user.id %}" class="btn btn--main btn--pill">Edit Profile</a>
         </div>
         <div class="profile__about">
           <h3>About</h3>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur illo tenetur
-            facilis sunt nemo debitis quisquam hic atque aut? Ducimus alias placeat optio
-            accusamus repudiandae quis ab ex exercitationem rem?
+            {{ user.bio }}
           </p>
         </div>
       </div>
 
       <div class="roomList__header">
         <div>
-          <h2>Study Rooms Hosted by {{ user.username }}</a>
-            <!-- TODO replace username to full_name ⬆ after -->
+          <h2>Study Rooms Hosted by {{ user.name }}</a>
+
           </h2>
         </div>
       </div>

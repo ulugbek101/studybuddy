@@ -7,7 +7,7 @@
         <div class="room">
             <div class="room__top">
                 <div class="room__topLeft">
-                    <a href="{% url 'home' %}">
+                    <a href="{{ request.META.HTTP_REFERER  }}">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                             viewBox="0 0 32 32">
                             <title>arrow-left</title>
@@ -64,7 +64,7 @@
                         <p>Hosted By</p>
                         <a href="{% url 'profile' pk=room.host.id %}" class="room__author">
                             <div class="avatar avatar--small">
-                                <img src="https://randomuser.me/api/portraits/men/37.jpg" />
+                                <img src="{{ room.host.avatar.url }}" />
                             </div>
                             <span>@{{ room.host.username }}</span>
                         </a>
@@ -87,7 +87,7 @@
                                 <div class="thread__author">
                                     <a href="{% url 'profile' pk=comment.user.id %}" class="thread__authorInfo">
                                         <div class="avatar avatar--small">
-                                            <img src="https://randomuser.me/api/portraits/men/37.jpg" />
+                                            <img src="{{ comment.user.avatar.url }}" />
                                         </div>
                                         <span>@{{ comment.user.username }}</span>
                                     </a>
@@ -131,10 +131,12 @@
                 {% for participant in participants %}
                 <a href="{% url 'profile' pk=participant.id %}" class="participant">
                     <div class="avatar avatar--medium">
-                        <img src="https://randomuser.me/api/portraits/men/37.jpg" />
+                        <img src="{{ participant.avatar.url }}" />
                     </div>
                     <p>
-                        {{ participant.username }}
+                        {% if participant.name %}
+                        {{ participant.name }}
+                        {% endif %}
                         <span>@{{ participant.username }}</span>
                     </p>
                 </a>

@@ -1,17 +1,15 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 
 from . import models
 from . import forms
-from base.models import Topic, Message
-
+from base.models import Topic, Message, User
+ 
 
 def user_profile(request, pk):
-    user = models.User.objects.get(id=pk)
+    user = User.objects.get(id=pk)
     rooms = user.room_set.all()
     room_messages = user.message_set.filter(user=user)
     topics = Topic.objects.all()
@@ -30,7 +28,7 @@ def user_profile_edit(request, pk):
     user = models.User.objects.get(id=pk)
     
     if request.method == 'POST':
-        form = forms.UserProfileUpdateForm(request.POST, instance=user)
+        form = forms.UserProfileUpdateForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
             return redirect('profile', pk=user.id)
@@ -46,21 +44,28 @@ def user_login(request):
     if request.user.is_authenticated:
         return redirect('home')
     if request.method == 'POST':
-        username = request.POST.get('username').lower()
+        email = request.POST.get('email').lower()
         password = request.POST.get('password')
 
         try:
-            user = User.objects.get(username=username)
+            user = models.User.objects.get(email=email)
         except:
             user = None
             messages.error(request, 'User does not exist!')
 
-        user = authenticate(request, username=username, password=password)
+        user = authenticate(request, email=email, password=password)
         if user is not None:
+            if user.name:
+                name = user.name
+            elif user.first_name and user.last_name:
+                name = f"{user.first_name} {user.last_name}"
+            else:
+                name = user.username
             login(request, user)
+            messages.success(request, f"Welcome, {name}")
             return redirect('home')
         else:
-            messages.error(request, 'Username or Password is incorrect!')
+            messages.error(request, 'Email or Password is incorrect!')
 
     context = {
         
@@ -77,9 +82,11 @@ def user_registration(request):
             user.username = user.username.lower()
             user.save()
             login(request, user)
+            messages.success(request, f"Succesfully signed up !")
             return redirect('login')
         else:
             messages.error(request, 'An error occurred during registration!')
+            # return redirect('login')
 
     form = forms.UserRegistrationForm()
     context = {
