@@ -48,14 +48,21 @@ def user_login(request):
         password = request.POST.get('password')
 
         try:
-            user = models.User.objects.get(username=email)
+            user = models.User.objects.get(email=email)
         except:
             user = None
             messages.error(request, 'User does not exist!')
 
         user = authenticate(request, email=email, password=password)
         if user is not None:
+            if user.name:
+                name = user.name
+            elif user.first_name and user.last_name:
+                name = f"{user.first_name} {user.last_name}"
+            else:
+                name = user.username
             login(request, user)
+            messages.success(request, f"Welcome, {name}")
             return redirect('home')
         else:
             messages.error(request, 'Email or Password is incorrect!')
@@ -75,9 +82,11 @@ def user_registration(request):
             user.username = user.username.lower()
             user.save()
             login(request, user)
+            messages.success(request, f"Succesfully signed up !")
             return redirect('login')
         else:
             messages.error(request, 'An error occurred during registration!')
+            # return redirect('login')
 
     form = forms.UserRegistrationForm()
     context = {

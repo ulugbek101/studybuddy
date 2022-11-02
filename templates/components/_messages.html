@@ -1,0 +1,16 @@
+{% if messages %}
+
+<div class="message--card-parent">
+    <div class="message--card active">
+        <button class="close--btn" onclick="flashMessageClose()">
+            x
+        </button>
+        {% for message in messages %}
+        <p class="message--body">
+            {{ message }}
+        </p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endif %}

@@ -67,3 +67,18 @@ if (photoInput)
 // Scroll to Bottom
 const conversationThread = document.querySelector(".room__box");
 if (conversationThread) conversationThread.scrollTop = conversationThread.scrollHeight;
+<<<<<<< HEAD
+=======
+
+
+// Close btn start
+
+function flashMessageClose() {
+  document.querySelector('.message--card-parent').style.display = 'none';
+
+}
+
+// Close btn end
+
+
+>>>>>>> test

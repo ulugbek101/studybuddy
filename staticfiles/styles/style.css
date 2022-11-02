@@ -1,5 +1,72 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
+/* Message Card style start */
+
+body {
+  position: relative;
+}
+
+.message--card-parent {
+  position: absolute;
+  left: 50%;
+  top: -50rem;
+  transform: translate(-50%);
+  transition: 0.4s ease-out;
+  animation: messageCardAnimation 0.4s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes messageCardAnimation {
+  0% {
+    top: -50rem;
+  }
+
+  100% {
+    top: 8rem;
+  }
+}
+
+.message--card {
+  padding: 10px;
+  margin: 0 auto;
+  width: 250px;
+  max-height: 100px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+}
+
+.message--body {
+  height: 100%;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: justify;
+  color: rgb(255, 255, 255);
+  padding: 10px 15px;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.close--btn {
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+  font-weight: 900;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+/* Message Cart style end */
+
+
 :root {
   --color-main: #71c6dd;
   --color-main-light: #e1f6fb;
@@ -108,7 +175,7 @@ a {
   color: var(--color-light);
 }
 
-.btn > svg {
+.btn>svg {
   fill: currentColor;
   width: 1.6rem;
   height: 1.6rem;
@@ -236,7 +303,7 @@ a {
   background-color: var(--color-dark-medium);
 }
 
-.dropdown-menu > a:not(:last-child) {
+.dropdown-menu>a:not(:last-child) {
   border-bottom: 1px solid var(--color-dark-medium);
 }
 
@@ -270,7 +337,7 @@ a {
   background-color: var(--color-dark);
 }
 
-.header > .container {
+.header>.container {
   display: flex;
   gap: 9.5rem;
 }
@@ -282,18 +349,18 @@ a {
   align-items: center;
 }
 
-.header__logo > img {
+.header__logo>img {
   height: 3.2rem;
   width: 3.2rem;
 }
 
-.header__logo > h1 {
+.header__logo>h1 {
   font-weight: 700;
   font-size: 2rem;
   color: var(--color-light);
 }
 
-.header__search > label {
+.header__search>label {
   background-color: var(--color-dark-medium);
   padding: 1.3rem 1rem;
   display: flex;
@@ -322,7 +389,7 @@ a {
     width: 20rem;
   }
 
-  .header > .container {
+  .header>.container {
     gap: 3rem;
   }
 }
@@ -393,32 +460,33 @@ a {
   margin-top: 2.4rem;
 }
 
-.layout > .container {
+.layout>.container {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.layout--3 > .container > div:first-child {
+.layout--3>.container>div:first-child {
   flex-basis: 18%;
   max-width: 22.5rem;
 }
 
-.layout--3 > .container > div:nth-child(2) {
+.layout--3>.container>div:nth-child(2) {
   flex-basis: 50%;
 }
 
-.layout--3 > .container > div:last-child {
+.layout--3>.container>div:last-child {
   flex-basis: 25%;
 }
 
-.layout--2 > .container > div:first-child {
+.layout--2>.container>div:first-child {
   flex-basis: 72%;
 }
 
-.layout--2 > .container > div:last-child {
+.layout--2>.container>div:last-child {
   flex-basis: 25%;
 }
+
 /*========== Layout Box ==========*/
 
 .layout__box {
@@ -464,12 +532,13 @@ a {
 }
 
 @media screen and (max-width: 900px) {
+
   .activities,
   .topics {
     display: none;
   }
 
-  .layout--3 > .container > div:nth-child(2) {
+  .layout--3>.container>div:nth-child(2) {
     flex-basis: 100%;
   }
 }
@@ -823,6 +892,7 @@ a {
   font-weight: 500;
   font-size: 1.8rem;
 }
+
 .auth .layout__boxHeader {
   text-align: center;
   justify-content: center;
@@ -912,7 +982,7 @@ a {
     display: none;
   }
 
-  .layout--2 > .container > div:first-child {
+  .layout--2>.container>div:first-child {
     flex-basis: 100%;
   }
 }
@@ -1107,7 +1177,7 @@ a {
   background: transparent;
 }
 
-.room__message > form > input {
+.room__message>form>input {
   resize: none;
   background-color: var(--color-dark-light);
   color: var(--color-light);
@@ -1123,7 +1193,7 @@ a {
   position: relative;
 }
 
-.room__message > form > input::placeholder {
+.room__message>form>input::placeholder {
   color: var(--color-light-gray);
 }
 
