@@ -11,6 +11,13 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from environs import Env
+
+env = Env()
+env.read_env()
+
+from os import environ
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +30,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-l@rza9-ofa=ya$jg9q@0_$j441isbm7a3q8yz1^v$ft=xkxo*^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['study-buddy-rooms.herokuapp.com']
+ALLOWED_HOSTS = ['study-buddy-rooms.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -42,6 +49,9 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     
     'rest_framework',
+    
+    'whitenoise',
+    'cloudinary_storage'
 ]
 
 
@@ -49,6 +59,8 @@ AUTH_USER_MODEL = 'users.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -83,13 +95,23 @@ WSGI_APPLICATION = 'STUDYBUD.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',  
+        'NAME': env.str('DB_NAME'),
+        'HOST': env.str('DB_HOST_NAME'),
+        'USER': env.str('DB_USER'),
+        'PASSWORD': env.str('DB_PASSWORD'), 
+        'PORT': env.str('DB_PORT'),  
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -115,7 +137,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Asia/Tashkent'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -137,6 +159,12 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = 'images/'
 MEDIA_ROOT = BASE_DIR / 'staticfiles/images'
 
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": env.str("CLOUD_NAME"),
+    "API_KEY": env.str("API_KEY"),
+    "API_SECRET": env.str("API_SECRET"),
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
