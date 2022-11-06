@@ -175,6 +175,7 @@ a {
   color: var(--color-light);
 }
 
+
 .btn>svg {
   fill: currentColor;
   width: 1.6rem;
@@ -349,7 +350,7 @@ a {
   align-items: center;
 }
 
-.header__logo>img {
+header__logo>img {
   height: 3.2rem;
   width: 3.2rem;
 }
@@ -361,6 +362,7 @@ a {
 }
 
 .header__search>label {
+
   background-color: var(--color-dark-medium);
   padding: 1.3rem 1rem;
   display: flex;
@@ -388,6 +390,7 @@ a {
   .header__search input {
     width: 20rem;
   }
+
 
   .header>.container {
     gap: 3rem;
@@ -467,6 +470,7 @@ a {
 }
 
 .layout--3>.container>div:first-child {
+
   flex-basis: 18%;
   max-width: 22.5rem;
 }
@@ -486,6 +490,23 @@ a {
 .layout--2>.container>div:last-child {
   flex-basis: 25%;
 }
+
+.layout--3>.container>div:nth-child(2) {
+  flex-basis: 50%;
+}
+
+.layout--3>.container>div:last-child {
+  flex-basis: 25%;
+}
+
+.layout--2>.container>div:first-child {
+  flex-basis: 72%;
+}
+
+.layout--2>.container>div:last-child {
+  flex-basis: 25%;
+}
+
 
 /*========== Layout Box ==========*/
 
@@ -539,6 +560,7 @@ a {
   }
 
   .layout--3>.container>div:nth-child(2) {
+
     flex-basis: 100%;
   }
 }
@@ -983,6 +1005,7 @@ a {
   }
 
   .layout--2>.container>div:first-child {
+
     flex-basis: 100%;
   }
 }
@@ -1232,4 +1255,5 @@ a {
   font-weight: 500;
   color: var(--color-main);
   font-weight: 1.4rem;
+
 }
