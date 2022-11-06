@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
-<<<<<<< HEAD
-=======
 /* Message Card style start */
 
 body {
@@ -69,7 +67,6 @@ body {
 /* Message Cart style end */
 
 
->>>>>>> test
 :root {
   --color-main: #71c6dd;
   --color-main-light: #e1f6fb;
@@ -178,11 +175,8 @@ a {
   color: var(--color-light);
 }
 
-<<<<<<< HEAD
-.btn > svg {
-=======
+
 .btn>svg {
->>>>>>> test
   fill: currentColor;
   width: 1.6rem;
   height: 1.6rem;
@@ -310,11 +304,7 @@ a {
   background-color: var(--color-dark-medium);
 }
 
-<<<<<<< HEAD
-.dropdown-menu > a:not(:last-child) {
-=======
 .dropdown-menu>a:not(:last-child) {
->>>>>>> test
   border-bottom: 1px solid var(--color-dark-medium);
 }
 
@@ -348,11 +338,7 @@ a {
   background-color: var(--color-dark);
 }
 
-<<<<<<< HEAD
-.header > .container {
-=======
 .header>.container {
->>>>>>> test
   display: flex;
   gap: 9.5rem;
 }
@@ -364,30 +350,19 @@ a {
   align-items: center;
 }
 
-<<<<<<< HEAD
-.header__logo > img {
-=======
-.header__logo>img {
->>>>>>> test
+header__logo>img {
   height: 3.2rem;
   width: 3.2rem;
 }
 
-<<<<<<< HEAD
-.header__logo > h1 {
-=======
 .header__logo>h1 {
->>>>>>> test
   font-weight: 700;
   font-size: 2rem;
   color: var(--color-light);
 }
 
-<<<<<<< HEAD
-.header__search > label {
-=======
 .header__search>label {
->>>>>>> test
+
   background-color: var(--color-dark-medium);
   padding: 1.3rem 1rem;
   display: flex;
@@ -416,11 +391,8 @@ a {
     width: 20rem;
   }
 
-<<<<<<< HEAD
-  .header > .container {
-=======
+
   .header>.container {
->>>>>>> test
     gap: 3rem;
   }
 }
@@ -491,42 +463,18 @@ a {
   margin-top: 2.4rem;
 }
 
-<<<<<<< HEAD
-.layout > .container {
-=======
 .layout>.container {
->>>>>>> test
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-<<<<<<< HEAD
-.layout--3 > .container > div:first-child {
-=======
 .layout--3>.container>div:first-child {
->>>>>>> test
+
   flex-basis: 18%;
   max-width: 22.5rem;
 }
 
-<<<<<<< HEAD
-.layout--3 > .container > div:nth-child(2) {
-  flex-basis: 50%;
-}
-
-.layout--3 > .container > div:last-child {
-  flex-basis: 25%;
-}
-
-.layout--2 > .container > div:first-child {
-  flex-basis: 72%;
-}
-
-.layout--2 > .container > div:last-child {
-  flex-basis: 25%;
-}
-=======
 .layout--3>.container>div:nth-child(2) {
   flex-basis: 50%;
 }
@@ -543,7 +491,23 @@ a {
   flex-basis: 25%;
 }
 
->>>>>>> test
+.layout--3>.container>div:nth-child(2) {
+  flex-basis: 50%;
+}
+
+.layout--3>.container>div:last-child {
+  flex-basis: 25%;
+}
+
+.layout--2>.container>div:first-child {
+  flex-basis: 72%;
+}
+
+.layout--2>.container>div:last-child {
+  flex-basis: 25%;
+}
+
+
 /*========== Layout Box ==========*/
 
 .layout__box {
@@ -589,20 +553,14 @@ a {
 }
 
 @media screen and (max-width: 900px) {
-<<<<<<< HEAD
-=======
 
->>>>>>> test
   .activities,
   .topics {
     display: none;
   }
 
-<<<<<<< HEAD
-  .layout--3 > .container > div:nth-child(2) {
-=======
   .layout--3>.container>div:nth-child(2) {
->>>>>>> test
+
     flex-basis: 100%;
   }
 }
@@ -956,10 +914,7 @@ a {
   font-weight: 500;
   font-size: 1.8rem;
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> test
 .auth .layout__boxHeader {
   text-align: center;
   justify-content: center;
@@ -1049,11 +1004,8 @@ a {
     display: none;
   }
 
-<<<<<<< HEAD
-  .layout--2 > .container > div:first-child {
-=======
   .layout--2>.container>div:first-child {
->>>>>>> test
+
     flex-basis: 100%;
   }
 }
@@ -1248,11 +1200,7 @@ a {
   background: transparent;
 }
 
-<<<<<<< HEAD
-.room__message > form > input {
-=======
 .room__message>form>input {
->>>>>>> test
   resize: none;
   background-color: var(--color-dark-light);
   color: var(--color-light);
@@ -1268,11 +1216,7 @@ a {
   position: relative;
 }
 
-<<<<<<< HEAD
-.room__message > form > input::placeholder {
-=======
 .room__message>form>input::placeholder {
->>>>>>> test
   color: var(--color-light-gray);
 }
 
@@ -1311,8 +1255,5 @@ a {
   font-weight: 500;
   color: var(--color-main);
   font-weight: 1.4rem;
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> test
